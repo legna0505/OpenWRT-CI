@@ -200,8 +200,15 @@ if [ -n "$HP_DIR" ]; then
 fi
 
 #修改argon主题字体和颜色
-ARGON_DIR="/home/runner/work/OpenWRT-CI/OpenWRT-CI/wrt/feeds/theme_argon/luci-app-argon-config"
-sed -i "s/primary '.*'/primary '#e198b4'/; s/'0.2'/'0.5'/; s/'none'/'bing'/; s/'600'/'normal'/" "$ARGON_DIR/root/etc/config/argon" && echo "theme-argon has been fixed!"
+if [ -d "$PKG_PATH/luci-theme-argon" ]; then
+	echo " "
+	if sed -i "s/primary '.*'/primary '#31a1a1'/; s/'0.2'/'0.5'/; s/'none'/'bing'/; s/'600'/'normal'/" \
+		"$PKG_PATH/luci-theme-argon/luci-app-argon-config/root/etc/config/argon"; then
+		echo "theme-argon has been fixed!"
+	else
+		echo "theme-argon fix failed; continuing!"
+	fi
+fi
 
 #修改aurora菜单式样
 if [ -d "$PKG_PATH/luci-app-aurora-config" ]; then
