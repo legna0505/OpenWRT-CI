@@ -201,12 +201,17 @@ fi
 
 #修改argon主题字体和颜色
 ARGON_DIR="/home/runner/work/OpenWRT-CI/OpenWRT-CI/wrt/feeds/theme_argon/luci-app-argon-config"
-sed -i "s/primary '.*'/primary '#e198b4'/; s/'0.2'/'0.5'/; s/'none'/'bing'/; s/'600'/'normal'/" "$ARGON_DIR/root/etc/config/argon" && echo "theme-argon has been fixed!"
+if [ -d "$ARGON_DIR" ]; then
+  echo "find argon!!"
+  sed -i "s/primary '.*'/primary '#e198b4'/; s/'0.2'/'0.5'/; s/'none'/'bing'/; s/'600'/'normal'/" "$ARGON_DIR/root/etc/config/argon" && echo "theme-argon has been fixed!"
+fi
+
 
 #修改aurora菜单式样
-if [ -d "$PKG_PATH/luci-app-aurora-config" ]; then
-	echo " "
-	if find "$PKG_PATH/luci-app-aurora-config/root/usr/share/aurora/" -type f -name '*.template' -exec \
+AURORA_DIR="/home/runner/work/OpenWRT-CI/OpenWRT-CI/wrt/feeds/theme_aurora/luci-app-aurora-config"
+if [ -d "$AURORA_DIR" ]; then
+	echo "find aurora!!"
+	if find "$AURORA_DIR/root/usr/share/aurora/" -type f -name '*.template' -exec \
 		sed -i "s/nav_type '.*'/nav_type 'dropdown'/g; s/struct_radius_base '.*'/struct_radius_base '0.125rem'/g" {} +; then
 		echo "theme-aurora has been fixed!"
 	else
