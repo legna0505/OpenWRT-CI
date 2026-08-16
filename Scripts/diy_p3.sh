@@ -60,6 +60,13 @@ wget https://raw.githubusercontent.com/lisaac/luci-app-diskman/master/applicatio
 mkdir -p $package_path/parted
 wget https://raw.githubusercontent.com/lisaac/luci-app-diskman/master/Parted.Makefile -O $package_path/parted/Makefile
 
+# kucat主题
+git clone --depth 1 --branch master --single-branch --no-checkout https://github.com/sirpdboy/luci-theme-kucat.git $package_path/luci-theme-kucat
+pushd $package_path/luci-theme-kucat
+umask 022
+git checkout
+popd
+
 # turboacc安装
 curl -sSL https://raw.githubusercontent.com/chenmozhijin/turboacc/luci/add_turboacc.sh -o add_turboacc.sh
 if [[ -f add_turboacc.sh ]]; then
