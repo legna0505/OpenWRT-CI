@@ -62,7 +62,7 @@ wget https://raw.githubusercontent.com/lisaac/luci-app-diskman/master/Parted.Mak
 
 # kucat主题
 git clone --depth 1 --branch master --single-branch --no-checkout https://github.com/sirpdboy/luci-theme-kucat.git $package_path/luci-theme-kucat
-pushd $netspeedtest_path
+pushd $package_path/luci-theme-kucat
 umask 022
 git checkout
 popd
