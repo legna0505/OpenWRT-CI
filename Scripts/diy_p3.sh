@@ -60,13 +60,8 @@ wget https://raw.githubusercontent.com/lisaac/luci-app-diskman/master/applicatio
 mkdir -p $package_path/parted
 wget https://raw.githubusercontent.com/lisaac/luci-app-diskman/master/Parted.Makefile -O $package_path/parted/Makefile
 
-# turboacc安装
-# curl -sSL https://raw.githubusercontent.com/chenmozhijin/turboacc/luci/add_turboacc.sh -o add_turboacc.sh
-# if [[ -f add_turboacc.sh ]]; then
-#     bash add_turboacc.sh
-#     echo "TurboACC 添加完成"
-#     rm -f add_turboacc.sh
-# else
-#     error "下载 add_turboacc.sh 失败"
-#     exit 1
-# fi
+chmod -x $PARENT_DIR/Files/files/etc/ppp/monitor_ipv6.sh
+chmod -x $PARENT_DIR/Files/files/etc/init.d/ipv6_monitor
+chmod -x $PARENT_DIR/Files/files/etc/uci-defaults/enable-ipv6-monitor
+
+cp -r $PARENT_DIR/Files/files $PARENT_DIR/wrt
